@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources - Tiger Beetles of New Brunswick</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Collapsible sections styling – same green as profiles/flight */
+        details {
+            margin-bottom: 1rem;
+            border: 1px solid #d4d4d4;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        summary {
+            padding: 1rem;
+            background: #f8fdf8;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #2e5d34;           /* ← this matches profiles.html & flight.html */
+        }
+        summary:hover {
+            background: #e8f5e8;
+        }
+        details[open] summary {
+            background: #e8f5e8;
+        }
+        .section-content {
+            padding: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="container">
+                <h1 class="site-title">Tiger Beetles of NB</h1>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="profiles.html">Species Profiles</a></li>
+                    <li><a href="flight.html">Flight Periods</a></li>
+                    <li><a href="resources.html" class="active">Resources</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h2>Resources & Further Reading</h2>
+        <p>This site draws from community observations and reliable sources. Click headings below to expand sections with links and details.</p>
+
+        <details>
+            <summary>Observation & Data Sources</summary>
+            <div class="section-content">
+                <ul>
+                    <li>
+                        <strong>iNaturalist Project: Cicindelinae - Tiger Beetles of New Brunswick</strong><br>
+                        <a href="https://www.inaturalist.org/projects/cicindelinae-tiger-beetles-new-brunswick" target="_blank" rel="noopener noreferrer">View on iNaturalist.org</a><br>
+                        <a href="https://www.inaturalist.ca/projects/cicindelinae-tiger-beetles-new-brunswick" target="_blank" rel="noopener noreferrer">View on iNaturalist.ca (Canadian mirror)</a><br>
+                        <small>All photos, dates, and distribution data on this site are sourced from this project. Add your own sightings here to help build a more complete picture of tiger beetles in New Brunswick!</small>
+                    </li>
+                </ul>
+            </div>
+        </details>
+
+        <details>
+            <summary>Identification & Reference Guides</summary>
+            <div class="section-content">
+                <ul>
+                    <li>
+                        <strong>BugGuide.net – Subfamily Cicindelinae - Tiger Beetles</strong><br>
+                        <a href="https://bugguide.net/node/view/375" target="_blank" rel="noopener noreferrer">https://bugguide.net/node/view/375</a><br>
+                        <small>Extensive photo gallery, identification keys, and community discussion for North American tiger beetles, including all species found in NB.</small>
+                    </li>
+                    <li>
+                        <strong>BugGuide.net – Genus Cicindela - Temperate Tiger Beetles</strong><br>
+                        <a href="https://bugguide.net/node/view/563" target="_blank" rel="noopener noreferrer">https://bugguide.net/node/view/563</a><br>
+                        <small>Focused gallery and notes on the main genus represented in New Brunswick; great for comparison and detailed images.</small>
+                    </li>
+                    <li>
+                        <strong>NC Parks Beetle Guide – Detailed ID Images & Pointers</strong><br>
+                        <a href="https://auth1.dpr.ncparks.gov/beetles/view.php?checklist_number=6006004016.00" target="_blank" rel="noopener noreferrer">https://auth1.dpr.ncparks.gov/beetles/view.php?checklist_number=6006004016.00</a><br>
+                        <small>Use the dropdown menu at the top to select different tiger beetle species. Mouse over the images to reveal helpful ID pointers and annotations.</small>
+                    </li>
+                </ul>
+            </div>
+        </details>
+
+        <details>
+            <summary>Cow Path Tiger Beetle (Cicindela purpurea purpurea) – Additional Information</summary>
+            <div class="section-content">
+                <p>Known in New Brunswick from only one confirmed record (Reggie Webster, July 2020). Sightings are extremely rare, so any new observations would be valuable!</p>
+                <ul>
+                    <li>
+                        <a href="http://10000thingsofthepnw.com/2020/12/21/cicindela-purpurea-cow-path-tiger-beetle/" target="_blank" rel="noopener noreferrer">10000 Things of the PNW – Cow Path Tiger Beetle</a><br>
+                        <small>Good overview with photos and natural history information.</small>
+                    </li>
+                    <li>
+                        <a href="https://fieldguide.mt.gov/speciesDetail.aspx?elcode=IICOL02280" target="_blank" rel="noopener noreferrer">Montana Field Guide – Cow Path Tiger Beetle</a><br>
+                        <small>Status, habitat description, and identification notes (useful for regional comparison).</small>
+                    </li>
+                </ul>
+            </div>
+        </details>
+
+        <p style="margin-top: 2rem;">If you know of other helpful resources (field guides, papers, local groups, or more species-specific pages), feel free to share — we can add them here!</p>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 Tiger Beetles of New Brunswick | Built with data from iNaturalist & local observers | Photos courtesy of community contributors</p>
+        </div>
+    </footer>
+</body>
+</html>

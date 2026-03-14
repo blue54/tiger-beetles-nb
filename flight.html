@@ -5,6 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flight Periods - Tiger Beetles of New Brunswick</title>
     <link rel="stylesheet" href="style.css">
+
+    <!-- Chart.js core -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+    
+    <!-- Date-fns adapter -->
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+
+    <style>
+        /* Styling for collapsible sections */
+        details {
+            margin: 1.5rem 0;
+            border: 1px solid #d4d4d4;
+            border-radius: 8px;
+            overflow: hidden;
+            background: white;
+        }
+        summary {
+            padding: 1.2rem 1.5rem;
+            background: #f8fdf8;
+            cursor: pointer;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #2e5d34;
+            user-select: none;
+        }
+        summary:hover {
+            background: #e8f5e8;
+        }
+        details[open] summary {
+            background: #e8f5e8;
+        }
+        .section-content {
+            padding: 1.5rem;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -15,6 +50,7 @@
                     <li><a href="index.html">Home</a></li>
                     <li><a href="profiles.html">Species Profiles</a></li>
                     <li><a href="flight.html" class="active">Flight Periods</a></li>
+                    <li><a href="resources.html">Resources</a></li>
                 </ul>
             </div>
         </nav>
@@ -22,107 +58,123 @@
 
     <main class="container">
         <h2>Adult Flight Periods in New Brunswick</h2>
-        <p>Approximate periods when adults are active (regional data; refine with your 1141 iNaturalist observations for precise NB phenology).</p>
+        <p>Observed seasonal windows based on available records (earliest/latest month-day, ignoring year). Click headings below to expand sections. Hover over bars for details (when expanded).</p>
 
-        <div class="table-wrapper">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Species</th>
-                        <th>Scientific Name</th>
-                        <th>From (Month)</th>
-                        <th>To (Month)</th>
-                        <th>Notes</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><a href="species/twelve-spotted-tiger-beetle.html">Twelve-spotted Tiger Beetle</a></td>
-                        <td>Cicindela duodecimguttata</td>
-                        <td>April</td>
-                        <td>October</td>
-                        <td>Spring-fall; peaks May-June & Aug-Sep</td>
-                    </tr>
-                    <tr>
-                        <td><a href="species/six-spotted-tiger-beetle.html">Six-spotted Tiger Beetle</a></td>
-                        <td>Cicindela sexguttata</td>
-                        <td>April</td>
-                        <td>July</td>
-                        <td>Early spring peak; some to Sep</td>
-                    </tr>
-                    <tr>
-                        <td><a href="species/punctured-tiger-beetle.html">Punctured Tiger Beetle</a></td>
-                        <td>Cicindela punctulata</td>
-                        <td>May</td>
-                        <td>September</td>
-                        <td>Summer active</td>
-                    </tr>
-                    <tr>
-                        <td><a href="species/oblique-lined-tiger-beetle.html">Oblique-lined Tiger Beetle</a></td>
-                        <td>Cicindela tranquebarica tranquebarica</td>
-                        <td>May</td>
-                        <td>August</td>
-                        <td>Summer</td>
-                    </tr>
-                    <tr>
-                        <td><a href="species/lecontes-tiger-beetle.html">LeConte's Tiger Beetle</a></td>
-                        <td>Cicindela scutellaris lecontei</td>
-                        <td>April</td>
-                        <td>July</td>
-                        <td>Spring-early summer</td>
-                    </tr>
-                    <tr>
-                        <td><a href="species/hairy-necked-tiger-beetle.html">Hairy-necked Tiger Beetle</a></td>
-                        <td>Cicindela hirticollis rhodensis</td>
-                        <td>May</td>
-                        <td>August</td>
-                        <td>Sandy beaches/rivers</td>
-                    </tr>
-                    <tr>
-                        <td><a href="species/cow-path-tiger-beetle.html">Cow Path Tiger Beetle</a></td>
-                        <td>Cicindela purpurea purpurea</td>
-                        <td>April</td>
-                        <td>June</td>
-                        <td>Early spring; fall rare</td>
-                    </tr>
-                    <tr>
-                        <td><a href="species/common-claybank-tiger-beetle.html">Common Claybank Tiger Beetle</a></td>
-                        <td>Cicindela limbalis</td>
-                        <td>May</td>
-                        <td>August</td>
-                        <td>Clay/sand banks</td>
-                    </tr>
-                    <tr>
-                        <td><a href="species/cobblestone-tiger-beetle.html">Cobblestone Tiger Beetle</a></td>
-                        <td>Cicindela marginipennis</td>
-                        <td>June</td>
-                        <td>August</td>
-                        <td>Summer only; peak July; endangered in NB</td>
-                    </tr>
-                    <tr>
-                        <td><a href="species/bronzed-tiger-beetle.html">Bronzed Tiger Beetle</a></td>
-                        <td>Cicindela repanda repanda</td>
-                        <td>April</td>
-                        <td>October</td>
-                        <td>Spring-fall; common on rivers/sand</td>
-                    </tr>
-                    <tr>
-                        <td><a href="species/boreal-long-lipped-tiger-beetle.html">Boreal Long-lipped Tiger Beetle</a></td>
-                        <td>Cicindela longilabris longilabris</td>
-                        <td>May</td>
-                        <td>September</td>
-                        <td>Spring-fall; boreal/open woods/trails</td>
-                    </tr>
-                    <tr>
-                        <td><a href="species/appalachian-tiger-beetle.html">Appalachian Tiger Beetle</a></td>
-                        <td>Cicindela ancocisconensis</td>
-                        <td>April</td>
-                        <td>September</td>
-                        <td>Spring-fall; boulder beaches/rivers</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+        <details>
+            <summary>Expand Detailed Flight Table</summary>
+            <div class="section-content">
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Species</th>
+                                <th>Scientific Name</th>
+                                <th>From (earliest)</th>
+                                <th>To (latest)</th>
+                                <th>Notes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><a href="species/appalachian-tiger-beetle.html">Appalachian Tiger Beetle</a></td>
+                                <td>Cicindela ancocisconensis</td>
+                                <td>June 6</td>
+                                <td>August 28</td>
+                                <td>Spring-fall; peaks May–July</td>
+                            </tr>
+                            <tr>
+                                <td><a href="species/boreal-long-lipped-tiger-beetle.html">Boreal Long-lipped Tiger Beetle</a></td>
+                                <td>Cicindela longilabris</td>
+                                <td>April 24</td>
+                                <td>September 23</td>
+                                <td>Spring-fall; peaks May–July</td>
+                            </tr>
+                            <tr>
+                                <td><a href="species/bronzed-tiger-beetle.html">Bronzed Tiger Beetle</a></td>
+                                <td>Cicindela repanda</td>
+                                <td>May 3</td>
+                                <td>September 20</td>
+                                <td>Spring-fall; bimodal peaks May–June & Aug–Sep</td>
+                            </tr>
+                            <tr>
+                                <td><a href="species/cobblestone-tiger-beetle.html">Cobblestone Tiger Beetle</a></td>
+                                <td>Cicindela marginipennis</td>
+                                <td>June 14</td>
+                                <td>August 2</td>
+                                <td>Summer only; peak July; endangered in NB</td>
+                            </tr>
+                            <tr>
+                                <td><a href="species/common-claybank-tiger-beetle.html">Common Claybank Tiger Beetle</a></td>
+                                <td>Cicindela limbalis</td>
+                                <td>April 14</td>
+                                <td>September 3</td>
+                                <td>Spring–summer; peaks May–July</td>
+                            </tr>
+                            <tr>
+                                <td><a href="species/cow-path-tiger-beetle.html">Cow Path Tiger Beetle</a></td>
+                                <td>Cicindela purpurea purpurea</td>
+                                <td>July 16</td>
+                                <td>July 16</td>
+                                <td>Known from a single record on July 16, 2020 (Reggie Webster). Likely active earlier in spring (April–June) based on regional patterns, but no other sightings confirmed in NB despite searches.</td>
+                            </tr>
+                            <tr>
+                                <td><a href="species/hairy-necked-tiger-beetle.html">Hairy-necked Tiger Beetle</a></td>
+                                <td>Cicindela hirticollis</td>
+                                <td>April 22</td>
+                                <td>September 16</td>
+                                <td>Spring–fall; peaks May–July; often on sandy beaches/rivers</td>
+                            </tr>
+                            <tr>
+                                <td><a href="species/lecontes-tiger-beetle.html">LeConte's Tiger Beetle</a></td>
+                                <td>Cicindela scutellaris lecontei</td>
+                                <td>May 25</td>
+                                <td>October 4</td>
+                                <td>Spring–fall; peaks May–June</td>
+                            </tr>
+                            <tr>
+                                <td><a href="species/oblique-lined-tiger-beetle.html">Oblique-lined Tiger Beetle</a></td>
+                                <td>Cicindela tranquebarica</td>
+                                <td>April 15</td>
+                                <td>November 13</td>
+                                <td>Spring–fall; very extended season in some years</td>
+                            </tr>
+                            <tr>
+                                <td><a href="species/punctured-tiger-beetle.html">Punctured Tiger Beetle</a></td>
+                                <td>Cicindela punctulata</td>
+                                <td>July 7</td>
+                                <td>September 3</td>
+                                <td>Summer active</td>
+                            </tr>
+                            <tr>
+                                <td><a href="species/six-spotted-tiger-beetle.html">Six-spotted Tiger Beetle</a></td>
+                                <td>Cicindela sexguttata</td>
+                                <td>April 9</td>
+                                <td>September 14</td>
+                                <td>Early spring peak; some to Sep</td>
+                            </tr>
+                            <tr>
+                                <td><a href="species/twelve-spotted-tiger-beetle.html">Twelve-spotted Tiger Beetle</a></td>
+                                <td>Cicindela duodecimguttata</td>
+                                <td>April 18</td>
+                                <td>October 4</td>
+                                <td>Spring–fall; peaks May–June & Aug–Sep</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </details>
+
+        <details>
+            <summary>Expand Visual Flight Bar Chart</summary>
+            <div class="section-content">
+                <div style="position: relative; height: 350px; width: 100%; margin: 1rem 0;">
+                    <canvas id="flightChart"></canvas>
+                </div>
+            </div>
+        </details>
+
+        <p><small>Flight periods derived from NB observations. Rare species (e.g. Cow Path) have limited data. Ranges may expand with new sightings.</small></p>
     </main>
 
     <footer>
@@ -130,5 +182,91 @@
             <p>© 2026 Tiger Beetles of New Brunswick | Built with data from iNaturalist & local observers | Photos courtesy of community contributors</p>
         </div>
     </footer>
+
+    <!-- Chart script -->
+    <script>
+        const ctx = document.getElementById('flightChart')?.getContext('2d');
+        if (ctx) {
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: [
+                        'Appalachian Tiger Beetle',
+                        'Boreal Long-lipped Tiger Beetle',
+                        'Bronzed Tiger Beetle',
+                        'Cobblestone Tiger Beetle',
+                        'Common Claybank Tiger Beetle',
+                        'Cow Path Tiger Beetle',
+                        'Hairy-necked Tiger Beetle',
+                        'LeConte\'s Tiger Beetle',
+                        'Oblique-lined Tiger Beetle',
+                        'Punctured Tiger Beetle',
+                        'Six-spotted Tiger Beetle',
+                        'Twelve-spotted Tiger Beetle'
+                    ],
+                    datasets: [{
+                        label: 'Flight Period',
+                        data: [
+                            {x: ['2024-06-06', '2024-08-28'], y: 0},
+                            {x: ['2024-04-24', '2024-09-23'], y: 1},
+                            {x: ['2024-05-03', '2024-09-20'], y: 2},
+                            {x: ['2024-06-14', '2024-08-02'], y: 3},
+                            {x: ['2024-04-14', '2024-09-03'], y: 4},
+                            {x: ['2024-07-16', '2024-07-16'], y: 5},
+                            {x: ['2024-04-22', '2024-09-16'], y: 6},
+                            {x: ['2024-05-25', '2024-10-04'], y: 7},
+                            {x: ['2024-04-15', '2024-11-13'], y: 8},
+                            {x: ['2024-07-07', '2024-09-03'], y: 9},
+                            {x: ['2024-04-09', '2024-09-14'], y: 10},
+                            {x: ['2024-04-18', '2024-10-04'], y: 11}
+                        ],
+                        backgroundColor: 'rgba(0, 100, 0, 0.7)',
+                        borderColor: '#004d00',
+                        borderWidth: 1,
+                        borderRadius: 8,
+                        barThickness: 24,
+                        barPercentage: 0.9,
+                        categoryPercentage: 0.8
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    scales: {
+                        x: {
+                            type: 'time',
+                            time: { unit: 'month', displayFormats: { month: 'MMM' } },
+                            min: '2024-04-01',
+                            max: '2024-11-30',
+                            title: { display: true, text: 'Month' },
+                            grid: { display: true }
+                        },
+                        y: { ticks: { font: { size: 14 } } }
+                    },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                title: function(context) {
+                                    return context[0].label;
+                                },
+                                label: function(context) {
+                                    const startDate = new Date(context.raw.x[0]);
+                                    const endDate = new Date(context.raw.x[1]);
+                                    startDate.setDate(startDate.getDate() + 1);
+                                    endDate.setDate(endDate.getDate() + 1);
+                                    const start = startDate.toLocaleDateString('en-US', {month: 'short', day: 'numeric'});
+                                    const end = endDate.toLocaleDateString('en-US', {month: 'short', day: 'numeric'});
+                                    return `Flight Window: ${start} – ${end}`;
+                                }
+                            }
+                        }
+                    },
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    animation: { duration: 800 }
+                }
+            });
+        }
+    </script>
 </body>
 </html>
