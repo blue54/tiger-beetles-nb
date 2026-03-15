@@ -6,14 +6,8 @@
     <title>Flight Periods - Tiger Beetles of New Brunswick</title>
     <link rel="stylesheet" href="style.css">
 
-    <!-- Chart.js core -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
-    
-    <!-- Date-fns adapter -->
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
-
     <style>
-        /* Styling for collapsible sections */
+        /* Collapsible sections styling */
         details {
             margin: 1.5rem 0;
             border: 1px solid #d4d4d4;
@@ -39,6 +33,21 @@
         .section-content {
             padding: 1.5rem;
         }
+        /* Screenshot styling */
+        .chart-screenshot {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin: 1rem auto;
+        }
+        .chart-note {
+            text-align: center;
+            font-style: italic;
+            color: #555;
+            margin-top: 0.5rem;
+        }
     </style>
 </head>
 <body>
@@ -58,7 +67,7 @@
 
     <main class="container">
         <h2>Adult Flight Periods in New Brunswick</h2>
-        <p>Observed seasonal windows based on available records (earliest/latest month-day, ignoring year). Click headings below to expand sections. Hover over bars for details (when expanded).</p>
+        <p>Observed seasonal windows based on available records (earliest/latest month-day, ignoring year). Click headings below to expand sections.</p>
 
         <details>
             <summary>Expand Detailed Flight Table</summary>
@@ -168,9 +177,13 @@
         <details>
             <summary>Expand Visual Flight Bar Chart</summary>
             <div class="section-content">
-                <div style="position: relative; height: 350px; width: 100%; margin: 1rem 0;">
-                    <canvas id="flightChart"></canvas>
-                </div>
+                <img 
+                    src="images/flight-chart.png" 
+                    alt="Visual summary of tiger beetle flight periods in New Brunswick – horizontal bars showing earliest to latest observation dates by month (April to November)" 
+                    class="chart-screenshot">
+                <p class="chart-note">
+                    Static image of flight periods (no hover tooltips). See detailed table above for exact dates and notes.
+                </p>
             </div>
         </details>
 
@@ -182,91 +195,5 @@
             <p>© 2026 Tiger Beetles of New Brunswick | Built with data from iNaturalist & local observers | Photos courtesy of community contributors</p>
         </div>
     </footer>
-
-    <!-- Chart script -->
-    <script>
-        const ctx = document.getElementById('flightChart')?.getContext('2d');
-        if (ctx) {
-            new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: [
-                        'Appalachian Tiger Beetle',
-                        'Boreal Long-lipped Tiger Beetle',
-                        'Bronzed Tiger Beetle',
-                        'Cobblestone Tiger Beetle',
-                        'Common Claybank Tiger Beetle',
-                        'Cow Path Tiger Beetle',
-                        'Hairy-necked Tiger Beetle',
-                        'LeConte\'s Tiger Beetle',
-                        'Oblique-lined Tiger Beetle',
-                        'Punctured Tiger Beetle',
-                        'Six-spotted Tiger Beetle',
-                        'Twelve-spotted Tiger Beetle'
-                    ],
-                    datasets: [{
-                        label: 'Flight Period',
-                        data: [
-                            {x: ['2024-06-06', '2024-08-28'], y: 0},
-                            {x: ['2024-04-24', '2024-09-23'], y: 1},
-                            {x: ['2024-05-03', '2024-09-20'], y: 2},
-                            {x: ['2024-06-14', '2024-08-02'], y: 3},
-                            {x: ['2024-04-14', '2024-09-03'], y: 4},
-                            {x: ['2024-07-16', '2024-07-16'], y: 5},
-                            {x: ['2024-04-22', '2024-09-16'], y: 6},
-                            {x: ['2024-05-25', '2024-10-04'], y: 7},
-                            {x: ['2024-04-15', '2024-11-13'], y: 8},
-                            {x: ['2024-07-07', '2024-09-03'], y: 9},
-                            {x: ['2024-04-09', '2024-09-14'], y: 10},
-                            {x: ['2024-04-18', '2024-10-04'], y: 11}
-                        ],
-                        backgroundColor: 'rgba(0, 100, 0, 0.7)',
-                        borderColor: '#004d00',
-                        borderWidth: 1,
-                        borderRadius: 8,
-                        barThickness: 24,
-                        barPercentage: 0.9,
-                        categoryPercentage: 0.8
-                    }]
-                },
-                options: {
-                    indexAxis: 'y',
-                    scales: {
-                        x: {
-                            type: 'time',
-                            time: { unit: 'month', displayFormats: { month: 'MMM' } },
-                            min: '2024-04-01',
-                            max: '2024-11-30',
-                            title: { display: true, text: 'Month' },
-                            grid: { display: true }
-                        },
-                        y: { ticks: { font: { size: 14 } } }
-                    },
-                    plugins: {
-                        legend: { display: false },
-                        tooltip: {
-                            callbacks: {
-                                title: function(context) {
-                                    return context[0].label;
-                                },
-                                label: function(context) {
-                                    const startDate = new Date(context.raw.x[0]);
-                                    const endDate = new Date(context.raw.x[1]);
-                                    startDate.setDate(startDate.getDate() + 1);
-                                    endDate.setDate(endDate.getDate() + 1);
-                                    const start = startDate.toLocaleDateString('en-US', {month: 'short', day: 'numeric'});
-                                    const end = endDate.toLocaleDateString('en-US', {month: 'short', day: 'numeric'});
-                                    return `Flight Window: ${start} – ${end}`;
-                                }
-                            }
-                        }
-                    },
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    animation: { duration: 800 }
-                }
-            });
-        }
-    </script>
 </body>
 </html>
